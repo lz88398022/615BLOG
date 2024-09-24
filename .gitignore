@@ -1,0 +1,6 @@
+/selfBlogBackend/.idea/
+/selfBlogBackend/blog-web/target/
+/selfBlogBackend/blog-config/target/
+/selfBlogBackend/blog-dao/target/
+/selfBlogBackend/blog-entity/target/
+/selfBlogBackend/blog-service/target/

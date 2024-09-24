@@ -5,14 +5,15 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.3.5-SNAPSHOT</version>
+        <version>3.3.3</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.cimc.hulk</groupId>
     <artifactId>selfBlog</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>selfBlog</name>
-    <description>selfBlog</description>
+    <description>615博客项目</description>
+    <packaging>pom</packaging>
     <url/>
     <licenses>
         <license/>
@@ -33,8 +34,11 @@
         <alipay.version>4.34.68.ALL</alipay.version>
         <lucene.version>8.0.0</lucene.version>
         <druid.version>1.2.15</druid.version>
-        <mybatisplus-springboot.version>3.5.5</mybatisplus-springboot.version>
+        <mybatisplus-springboot.version>3.5.7</mybatisplus-springboot.version>
         <mysql.version>8.0.32</mysql.version>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencies>
@@ -54,15 +58,37 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-boot-starter</artifactId>
-            <version>${mybatisplus-springboot.version}</version>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>5.8.5</version>
         </dependency>
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>${mysql.version}</version>
-            <scope>compile</scope>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>2.2.2</version>
+        </dependency>
+        <!-- mybatis plus -->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>3.5.5</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>mybatis-spring</artifactId>
+                    <groupId>org.mybatis</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis-spring</artifactId>
+            <version>3.0.3</version>
+        </dependency>
+        <!--引入autoconfigure-->
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-autoconfigure</artifactId>
+            <version>2.1.4</version>
         </dependency>
         <dependency>
             <groupId>com.alibaba</groupId>
@@ -70,7 +96,13 @@
             <version>${druid.version}</version>
         </dependency>
     </dependencies>
-
+    <modules>
+        <module>blog-web</module>
+        <module>blog-config</module>
+        <module>blog-service</module>
+        <module>blog-dao</module>
+        <module>blog-entity</module>
+    </modules>
     <build>
         <plugins>
             <plugin>
